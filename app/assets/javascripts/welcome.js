@@ -1,3 +1,40 @@
+function serialize(){
+
+  var rows = [1,2,3,4,5,6,7,8,9];
+  var columns = ["a","b","c","d","e","f","g","h","i"];
+  var values = {};
+  _.each(rows, function(row){
+    var validRowValues = $("#" + row).text();
+    _.each(columns, function(column){
+      var validColumnValues = $("#" + column).text();
+      console.log(column+row);
+      var val = $("#" + column+row + " input[type=number]").val();
+      values[column+row] = val;
+    });
+  });
+
+  console.log(values);
+  return values;
+}
+
+function deSerialize(values){
+
+  var rows = [1,2,3,4,5,6,7,8,9];
+  var columns = ["a","b","c","d","e","f","g","h","i"];
+  _.each(rows, function(row){
+    var validRowValues = $("#" + row).text();
+    _.each(columns, function(column){
+      var validColumnValues = $("#" + column).text();
+      console.log(column+row);
+      $("#" + column+row + " input[type=number]").val(values[column+row]);
+    });
+  });
+
+  console.log(values);
+}
+
+
+
 
 function removeValueFromArray(arr, val){
   var index = arr.indexOf(val);
@@ -230,7 +267,22 @@ $( document ).ready(function() {
     
     $("#c9 input[type=number]").val("3");
     $("#i9 input[type=number]").val("1");
+    
   });
+
+$("#serialize").on( "click", function(){
+  var values = serialize();
+  
+  var json = JSON.stringify(values);
+    $("#serializedValues").val(json);
+});
+
+$("#deSerialize").on( "click", function(){
+
+  values = $("#serializedValues").val();
+  var obj = JSON.parse( values );
+    deSerialize(obj);
+});
 
 $("#fill1").on( "click", function(){
   
