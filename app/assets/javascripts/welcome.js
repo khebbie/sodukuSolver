@@ -184,18 +184,14 @@ $( document ).ready(function() {
     console.clear();
     
     var solution = {};
-    var lastSolution = {};
     for(var i = 0;i < 20;i++){
-      if(solution === lastSolution){
-        alert("problem");
-      }
+      
       
       solution = solve();
       
       if(hasBeenSolved(solution)){
        break; 
      }
-     lastSolution = solution;
    }
  });
 
