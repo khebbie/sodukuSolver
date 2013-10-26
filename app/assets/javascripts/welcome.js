@@ -213,6 +213,12 @@ function hasBeenSolved(solution){
  return solved;
 }
 $( document ).ready(function() {
+$.get( "/sudokus/1.json", function( data ) {
+  var obj = JSON.parse( data.data );
+    deSerialize(obj);
+});
+
+
   $("#reset").click(function(){
     $("input[type=number]").val("");
   });

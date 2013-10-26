@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sudoku.name %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @sudoku.data %>
+</p>
+
+
+<%= link_to 'Edit', edit_sudoku_path(@sudoku) %> |
+<%= link_to 'Back', sudokus_path %>

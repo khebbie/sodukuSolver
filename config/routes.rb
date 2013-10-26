@@ -1,4 +1,7 @@
 SodukoSolver::Application.routes.draw do
+  resources :sudokus
+
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
