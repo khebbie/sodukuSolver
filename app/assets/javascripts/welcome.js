@@ -42,9 +42,9 @@ function getValidsForThreeByThree(startCols, startRows){
   _.each(fields, function(entry){
    
     _.each(entry, function(itm){
-    var val = $("#" + itm + " input[type=number]").val();
+      var val = $("#" + itm + " input[type=number]").val();
 
-    valids = removeValueFromArray(valids, parseInt(val,10));
+      valids = removeValueFromArray(valids, parseInt(val,10));
     });
     
   });
@@ -101,7 +101,7 @@ function removeCommaEntry(array){
   if (index > -1) {
     array.splice(index, 1);
     return array;
-}
+  }
 
 }
 
@@ -152,7 +152,7 @@ function solve(){
         tbtValids = getValidsForThreeByThreeAsString(row, column);
         tbtValids = tbtValids.split(",");
         validColumnValues = validColumnValues.split(",");
-       validValues = _.intersection(validColumnValues, validRowValues, tbtValids);
+        validValues = _.intersection(validColumnValues, validRowValues, tbtValids);
         console.log(validValues);
         solution[column+row] = validValues;
         if(validValues.length === 1){
@@ -169,72 +169,72 @@ function solve(){
 function hasBeenSolved(solution){
   var solved = true;
   for (var key in solution) {
-     if(key.length!==0){
-       solved=false;
-     }
+   if(key.length!==0){
+     solved=false;
    }
-   return solved;
+ }
+ return solved;
 }
 $( document ).ready(function() {
-$("#reset").click(function(){
-  $("input[type=number]").val("");
-});
+  $("#reset").click(function(){
+    $("input[type=number]").val("");
+  });
 
-$("#solve").on( "click", function(){
-  console.clear();
-  
-  var solution = {};
-  var lastSolution = {};
-  for(var i = 0;i < 20;i++){
-    if(solution === lastSolution){
-      alert("problem");
-    }
+  $("#solve").on( "click", function(){
+    console.clear();
     
-     solution = solve();
-    
-    if(hasBeenSolved(solution)){
+    var solution = {};
+    var lastSolution = {};
+    for(var i = 0;i < 20;i++){
+      if(solution === lastSolution){
+        alert("problem");
+      }
+      
+      solution = solve();
+      
+      if(hasBeenSolved(solution)){
        break; 
-    }
-    lastSolution = solution;
-  }
-});
+     }
+     lastSolution = solution;
+   }
+ });
 
 
-$("#fill").on( "click", function(){
-  $("#a1 input[type=number]").val("2");
-  $("#c1 input[type=number]").val("8");
-  $("#d1 input[type=number]").val("7");
-  $("#g1 input[type=number]").val("9");
-  
-  $("#a3 input[type=number]").val("7");
-  $("#c3 input[type=number]").val("9");
-  $("#e3 input[type=number]").val("1");
-  $("#f3 input[type=number]").val("5");
-  $("#i3 input[type=number]").val("4");
-  
-  $("#g4 input[type=number]").val("1");
-  $("#i4 input[type=number]").val("3");
-  
-  $("#a5 input[type=number]").val("1");
-  $("#c5 input[type=number]").val("7");
-  $("#d5 input[type=number]").val("8");
-  $("#f5 input[type=number]").val("2");
-  $("#h5 input[type=number]").val("6");
-  
-  $("#c6 input[type=number]").val("5");
-  $("#h6 input[type=number]").val("2");
-  $("#i6 input[type=number]").val("7");
-  
-  $("#b7 input[type=number]").val("9");
-  $("#c7 input[type=number]").val("1");
-  
-  $("#b8 input[type=number]").val("2");
-  $("#g8 input[type=number]").val("6");
-  $("#h8 input[type=number]").val("3");
-  
-  $("#c9 input[type=number]").val("3");
-  $("#i9 input[type=number]").val("1");
-});
+  $("#fill").on( "click", function(){
+    $("#a1 input[type=number]").val("2");
+    $("#c1 input[type=number]").val("8");
+    $("#d1 input[type=number]").val("7");
+    $("#g1 input[type=number]").val("9");
+    
+    $("#a3 input[type=number]").val("7");
+    $("#c3 input[type=number]").val("9");
+    $("#e3 input[type=number]").val("1");
+    $("#f3 input[type=number]").val("5");
+    $("#i3 input[type=number]").val("4");
+    
+    $("#g4 input[type=number]").val("1");
+    $("#i4 input[type=number]").val("3");
+    
+    $("#a5 input[type=number]").val("1");
+    $("#c5 input[type=number]").val("7");
+    $("#d5 input[type=number]").val("8");
+    $("#f5 input[type=number]").val("2");
+    $("#h5 input[type=number]").val("6");
+    
+    $("#c6 input[type=number]").val("5");
+    $("#h6 input[type=number]").val("2");
+    $("#i6 input[type=number]").val("7");
+    
+    $("#b7 input[type=number]").val("9");
+    $("#c7 input[type=number]").val("1");
+    
+    $("#b8 input[type=number]").val("2");
+    $("#g8 input[type=number]").val("6");
+    $("#h8 input[type=number]").val("3");
+    
+    $("#c9 input[type=number]").val("3");
+    $("#i9 input[type=number]").val("1");
+  });
 
 $("#fill1").on( "click", function(){
   
