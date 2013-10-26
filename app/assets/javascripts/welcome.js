@@ -1,5 +1,4 @@
 function serialize(){
-
   var rows = [1,2,3,4,5,6,7,8,9];
   var columns = ["a","b","c","d","e","f","g","h","i"];
   var values = {};
@@ -18,7 +17,6 @@ function serialize(){
 }
 
 function deSerialize(values){
-
   var rows = [1,2,3,4,5,6,7,8,9];
   var columns = ["a","b","c","d","e","f","g","h","i"];
   _.each(rows, function(row){
