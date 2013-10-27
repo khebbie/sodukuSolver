@@ -253,6 +253,30 @@ $( document ).ready(function() {
    }
  });
 
+$('input[type="checkbox"]').on('change', function() {
+  $("#hintTable").toggle(!this.checked);
+  $("#x").toggle(!this.checked);
+  $("#a").toggle(!this.checked);
+  $("#b").toggle(!this.checked);
+  $("#c").toggle(!this.checked);
+  $("#d").toggle(!this.checked);
+  $("#e").toggle(!this.checked);
+  $("#f").toggle(!this.checked);
+  $("#g").toggle(!this.checked);
+  $("#h").toggle(!this.checked);
+  $("#i").toggle(!this.checked);
+
+  $("#1").toggle(!this.checked);
+  $("#2").toggle(!this.checked);
+  $("#3").toggle(!this.checked);
+  $("#4").toggle(!this.checked);
+  $("#5").toggle(!this.checked);
+  $("#6").toggle(!this.checked);
+  $("#7").toggle(!this.checked);
+  $("#8").toggle(!this.checked);
+  $("#9").toggle(!this.checked);
+});
+
 
   $("#fill").on( "click", function(){
     $("#a1 input[type=number]").val("2");
