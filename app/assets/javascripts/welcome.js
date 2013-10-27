@@ -1,40 +1,5 @@
-function serialize(){
-  var rows = [1,2,3,4,5,6,7,8,9];
-  var columns = ["a","b","c","d","e","f","g","h","i"];
-  var values = {};
-  _.each(rows, function(row){
-    var validRowValues = $("#" + row).text();
-    _.each(columns, function(column){
-      var validColumnValues = $("#" + column).text();
-      console.log(column+row);
-      var val = $("#" + column+row + " input[type=number]").val();
-      values[column+row] = val;
-    });
-  });
-
-  console.log(values);
-  return values;
-}
-
-function deSerialize(values){
-  var rows = [1,2,3,4,5,6,7,8,9];
-  var columns = ["a","b","c","d","e","f","g","h","i"];
-  _.each(rows, function(row){
-    var validRowValues = $("#" + row).text();
-    _.each(columns, function(column){
-      var validColumnValues = $("#" + column).text();
-      console.log(column+row);
-      $("#" + column+row + " input[type=number]").val(values[column+row]);
-    });
-  });
-
-  console.log(values);
-}
-
-
-
-
-function removeValueFromArray(arr, val){
+var welcome = (function(){
+  function removeValueFromArray(arr, val){
   var index = arr.indexOf(val);
 
   if (index > -1) {
@@ -42,8 +7,48 @@ function removeValueFromArray(arr, val){
   }
   return arr;
 }
+  return{
+   deSerialize: function(values){
+    var rows = [1,2,3,4,5,6,7,8,9];
+    var columns = ["a","b","c","d","e","f","g","h","i"];
+    _.each(rows, function(row){
+      var validRowValues = $("#" + row).text();
+      _.each(columns, function(column){
+        var validColumnValues = $("#" + column).text();
+        console.log(column+row);
+        $("#" + column+row + " input[type=number]").val(values[column+row]);
+      });
+    });
 
-function getValidsForColumn(column){
+    console.log(values);
+  },
+  serialize: function (){
+    var rows = [1,2,3,4,5,6,7,8,9];
+    var columns = ["a","b","c","d","e","f","g","h","i"];
+    var values = {};
+    _.each(rows, function(row){
+      var validRowValues = $("#" + row).text();
+      _.each(columns, function(column){
+        var validColumnValues = $("#" + column).text();
+        console.log(column+row);
+        var val = $("#" + column+row + " input[type=number]").val();
+        values[column+row] = val;
+      });
+    });
+
+    console.log(values);
+    return values;
+  },
+  hasBeenSolved: function (solution){
+    var solved = true;
+    for (var key in solution) {
+     if(key.length!==0){
+       solved=false;
+     }
+   }
+   return solved;
+ },
+ getValidsForColumn: function (column){
   var valids = [1,2,3,4,5,6,7,8,9];
   var as = _.map(valids, function(num) { return column + num; });
   
@@ -53,9 +58,9 @@ function getValidsForColumn(column){
   });
   
   return valids;
-}
+},
 
-function getValidsForRow(row){
+getValidsForRow: function (row){
   var valids = [1,2,3,4,5,6,7,8,9];
   var columns = ["a","b","c","d","e","f","g","h","i"];
   var as = _.map(columns, function(col) { return col + row; });
@@ -66,9 +71,8 @@ function getValidsForRow(row){
   });
   
   return valids;
-}
-
-function getValidsForThreeByThree(startCols, startRows){
+},
+getValidsForThreeByThree: function (startCols, startRows){
   var valids = [1,2,3,4,5,6,7,8,9];
   
   var fields = _.map(startCols, function(col) { 
@@ -86,6 +90,18 @@ function getValidsForThreeByThree(startCols, startRows){
 
   return valids;  
 }
+}
+})();
+
+
+
+
+
+
+
+
+
+
 
 function isIn(row, column, arr){
   return $.inArray(row, arr) !== -1 && $.inArray(column, arr) !== -1;
@@ -131,46 +147,37 @@ function getValidsForThreeByThreeAsString(row, column){
   }
 }
 
-function removeCommaEntry(array){
-  var index = array.indexOf(",");
-  if (index > -1) {
-    array.splice(index, 1);
-    return array;
-  }
-
-}
-
 function solve(){
-  $("#a").text(getValidsForColumn("a"));
-  $("#b").text(getValidsForColumn("b"));
-  $("#c").text(getValidsForColumn("c"));
-  $("#d").text(getValidsForColumn("d"));
-  $("#e").text(getValidsForColumn("e"));
-  $("#f").text(getValidsForColumn("f"));
-  $("#g").text(getValidsForColumn("g"));
-  $("#h").text(getValidsForColumn("h"));
-  $("#i").text(getValidsForColumn("i"));
+  $("#a").text(welcome.getValidsForColumn("a"));
+  $("#b").text(welcome.getValidsForColumn("b"));
+  $("#c").text(welcome.getValidsForColumn("c"));
+  $("#d").text(welcome.getValidsForColumn("d"));
+  $("#e").text(welcome.getValidsForColumn("e"));
+  $("#f").text(welcome.getValidsForColumn("f"));
+  $("#g").text(welcome.getValidsForColumn("g"));
+  $("#h").text(welcome.getValidsForColumn("h"));
+  $("#i").text(welcome.getValidsForColumn("i"));
   
-  $("#1").text(getValidsForRow("1"));
-  $("#2").text(getValidsForRow("2"));
-  $("#3").text(getValidsForRow("3"));
-  $("#4").text(getValidsForRow("4"));
-  $("#5").text(getValidsForRow("5"));
-  $("#6").text(getValidsForRow("6"));
-  $("#7").text(getValidsForRow("7"));
-  $("#8").text(getValidsForRow("8"));
-  $("#9").text(getValidsForRow("9"));
+  $("#1").text(welcome.getValidsForRow("1"));
+  $("#2").text(welcome.getValidsForRow("2"));
+  $("#3").text(welcome.getValidsForRow("3"));
+  $("#4").text(welcome.getValidsForRow("4"));
+  $("#5").text(welcome.getValidsForRow("5"));
+  $("#6").text(welcome.getValidsForRow("6"));
+  $("#7").text(welcome.getValidsForRow("7"));
+  $("#8").text(welcome.getValidsForRow("8"));
+  $("#9").text(welcome.getValidsForRow("9"));
   
   
-  $("#sa1").text(getValidsForThreeByThree(["a","b","c"], [1,2,3]));
-  $("#sd1").text(getValidsForThreeByThree(["d","e","f"], [1,2,3]));
-  $("#sg1").text(getValidsForThreeByThree(["g","h","i"], [1,2,3]));
-  $("#sa4").text(getValidsForThreeByThree(["a","b","c"], [4,5,6]));
-  $("#sd4").text(getValidsForThreeByThree(["d","e","f"], [4,5,6]));
-  $("#sg4").text(getValidsForThreeByThree(["g","h","i"], [4,5,6]));
-  $("#sa7").text(getValidsForThreeByThree(["a","b","c"], [7,8,9]));
-  $("#sd7").text(getValidsForThreeByThree(["d","e","f"], [7,8,9]));
-  $("#sg7").text(getValidsForThreeByThree(["g","h","i"], [7,8,9]));
+  $("#sa1").text(welcome.getValidsForThreeByThree(["a","b","c"], [1,2,3]));
+  $("#sd1").text(welcome.getValidsForThreeByThree(["d","e","f"], [1,2,3]));
+  $("#sg1").text(welcome.getValidsForThreeByThree(["g","h","i"], [1,2,3]));
+  $("#sa4").text(welcome.getValidsForThreeByThree(["a","b","c"], [4,5,6]));
+  $("#sd4").text(welcome.getValidsForThreeByThree(["d","e","f"], [4,5,6]));
+  $("#sg4").text(welcome.getValidsForThreeByThree(["g","h","i"], [4,5,6]));
+  $("#sa7").text(welcome.getValidsForThreeByThree(["a","b","c"], [7,8,9]));
+  $("#sd7").text(welcome.getValidsForThreeByThree(["d","e","f"], [7,8,9]));
+  $("#sg7").text(welcome.getValidsForThreeByThree(["g","h","i"], [7,8,9]));
   
   
   var rows = [1,2,3,4,5,6,7,8,9];
@@ -201,19 +208,11 @@ function solve(){
   return solution;
 }
 
-function hasBeenSolved(solution){
-  var solved = true;
-  for (var key in solution) {
-   if(key.length!==0){
-     solved=false;
-   }
- }
- return solved;
-}
+
 $( document ).ready(function() {
 $.get( "/sudokus/1.json", function( data ) {
   var obj = JSON.parse( data.data );
-    deSerialize(obj);
+    welcome.deSerialize(obj);
 });
 
 
@@ -230,7 +229,7 @@ $.get( "/sudokus/1.json", function( data ) {
       
       solution = solve();
       
-      if(hasBeenSolved(solution)){
+      if(welcome.hasBeenSolved(solution)){
        break; 
      }
    }
@@ -275,7 +274,7 @@ $.get( "/sudokus/1.json", function( data ) {
   });
 
 $("#serialize").on( "click", function(){
-  var values = serialize();
+  var values = welcome.serialize();
   
   var json = JSON.stringify(values);
     $("#serializedValues").val(json);
@@ -285,7 +284,7 @@ $("#deSerialize").on( "click", function(){
 
   values = $("#serializedValues").val();
   var obj = JSON.parse( values );
-    deSerialize(obj);
+    welcome.deSerialize(obj);
 });
 
 $("#fill1").on( "click", function(){

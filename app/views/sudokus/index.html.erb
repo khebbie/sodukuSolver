@@ -12,7 +12,7 @@
 <% @sudokus.each do |sudoku| %>
   <tr>
     <td><%= sudoku.name %></td>
-    <td><%= sudoku.data %></td>
+    <td class="sudokuCode"><pre><code class="json"><%= sudoku.data %></code></pre></td>
     <td><%= link_to 'Show', sudoku %></td>
     <td><%= link_to 'Edit', edit_sudoku_path(sudoku) %></td>
     <td><%= link_to 'Destroy', sudoku, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,3 +23,7 @@
 <br />
 
 <%= link_to 'New Sudoku', new_sudoku_path %>
+<script>
+  hljs.tabReplace = '    ';
+  hljs.initHighlightingOnLoad();
+  </script>
