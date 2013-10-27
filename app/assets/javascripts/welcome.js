@@ -282,43 +282,6 @@ $('input[type="checkbox"]').on('change', function() {
 });
 
 
-  $("#fill").on( "click", function(){
-    $("#a1 input[type=number]").val("2");
-    $("#c1 input[type=number]").val("8");
-    $("#d1 input[type=number]").val("7");
-    $("#g1 input[type=number]").val("9");
-    
-    $("#a3 input[type=number]").val("7");
-    $("#c3 input[type=number]").val("9");
-    $("#e3 input[type=number]").val("1");
-    $("#f3 input[type=number]").val("5");
-    $("#i3 input[type=number]").val("4");
-    
-    $("#g4 input[type=number]").val("1");
-    $("#i4 input[type=number]").val("3");
-    
-    $("#a5 input[type=number]").val("1");
-    $("#c5 input[type=number]").val("7");
-    $("#d5 input[type=number]").val("8");
-    $("#f5 input[type=number]").val("2");
-    $("#h5 input[type=number]").val("6");
-    
-    $("#c6 input[type=number]").val("5");
-    $("#h6 input[type=number]").val("2");
-    $("#i6 input[type=number]").val("7");
-    
-    $("#b7 input[type=number]").val("9");
-    $("#c7 input[type=number]").val("1");
-    
-    $("#b8 input[type=number]").val("2");
-    $("#g8 input[type=number]").val("6");
-    $("#h8 input[type=number]").val("3");
-    
-    $("#c9 input[type=number]").val("3");
-    $("#i9 input[type=number]").val("1");
-    
-  });
-
 $("#serialize").on( "click", function(){
   var values = welcome.serialize();
   
@@ -331,55 +294,5 @@ $("#deSerialize").on( "click", function(){
   values = $("#serializedValues").val();
   var obj = JSON.parse( values );
   welcome.deSerialize(obj);
-});
-
-$("#fill1").on( "click", function(){
-
-  $("#b1 input[type=number]").val("6");
-  $("#e1 input[type=number]").val("4");
-  $("#f1 input[type=number]").val("3");
-  $("#i1 input[type=number]").val("2");
-  
-  $("#b2 input[type=number]").val("1");
-  $("#c2 input[type=number]").val("7");
-  $("#d2 input[type=number]").val("9");
-  $("#f2 input[type=number]").val("2");
-  $("#g2 input[type=number]").val("6");
-  $("#i2 input[type=number]").val("4");
-  
-  $("#c3 input[type=number]").val("4");
-  $("#e3 input[type=number]").val("8");
-  $("#h3 input[type=number]").val("3");
-  
-  $("#a4 input[type=number]").val("8");
-  $("#c4 input[type=number]").val("5");
-  $("#e4 input[type=number]").val("1");
-  $("#f4 input[type=number]").val("6");
-  $("#g4 input[type=number]").val("4");
-  
-  $("#d5 input[type=number]").val("8");
-  $("#e5 input[type=number]").val("9");
-  $("#g5 input[type=number]").val("2");
-  $("#i5 input[type=number]").val("1");
-  
-  $("#a6 input[type=number]").val("2");
-  $("#b6 input[type=number]").val("4");
-  $("#d6 input[type=number]").val("5");
-  $("#h6 input[type=number]").val("6");
-  
-  $("#b7 input[type=number]").val("3");
-  $("#c7 input[type=number]").val("9");
-  $("#d7 input[type=number]").val("4");
-  $("#h7 input[type=number]").val("2");
-  
-  $("#b8 input[type=number]").val("8");
-  $("#d8 input[type=number]").val("1");
-  $("#f8 input[type=number]").val("5");
-  $("#g8 input[type=number]").val("3");
-  
-  $("#c9 input[type=number]").val("6");
-  $("#f9 input[type=number]").val("9");
-  $("#h9 input[type=number]").val("1");
-  $("#i9 input[type=number]").val("7");
 });
 });
