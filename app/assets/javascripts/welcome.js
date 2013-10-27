@@ -217,6 +217,30 @@ function queryObj() {
     return result;
 }
 
+function hidehints(hide){
+  $("#hintTable").toggle(!hide);
+  $("#x").toggle(!hide);
+  $("#a").toggle(!hide);
+  $("#b").toggle(!hide);
+  $("#c").toggle(!hide);
+  $("#d").toggle(!hide);
+  $("#e").toggle(!hide);
+  $("#f").toggle(!hide);
+  $("#g").toggle(!hide);
+  $("#h").toggle(!hide);
+  $("#i").toggle(!hide);
+
+  $("#1").toggle(!hide);
+  $("#2").toggle(!hide);
+  $("#3").toggle(!hide);
+  $("#4").toggle(!hide);
+  $("#5").toggle(!hide);
+  $("#6").toggle(!hide);
+  $("#7").toggle(!hide);
+  $("#8").toggle(!hide);
+  $("#9").toggle(!hide);
+}
+
 $( document ).ready(function() {
 
   var qo = queryObj();
@@ -254,27 +278,7 @@ $( document ).ready(function() {
  });
 
 $('input[type="checkbox"]').on('change', function() {
-  $("#hintTable").toggle(!this.checked);
-  $("#x").toggle(!this.checked);
-  $("#a").toggle(!this.checked);
-  $("#b").toggle(!this.checked);
-  $("#c").toggle(!this.checked);
-  $("#d").toggle(!this.checked);
-  $("#e").toggle(!this.checked);
-  $("#f").toggle(!this.checked);
-  $("#g").toggle(!this.checked);
-  $("#h").toggle(!this.checked);
-  $("#i").toggle(!this.checked);
-
-  $("#1").toggle(!this.checked);
-  $("#2").toggle(!this.checked);
-  $("#3").toggle(!this.checked);
-  $("#4").toggle(!this.checked);
-  $("#5").toggle(!this.checked);
-  $("#6").toggle(!this.checked);
-  $("#7").toggle(!this.checked);
-  $("#8").toggle(!this.checked);
-  $("#9").toggle(!this.checked);
+  hidehints(this.checked);
 });
 
 
